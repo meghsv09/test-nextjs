@@ -10,7 +10,9 @@ const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
+      accountRepresentativeId: a.id().required(),
     })
+    .secondaryIndexes((index) => [index("accountRepresentativeId")])
     .authorization((allow) => [allow.guest()]),
 });
 
